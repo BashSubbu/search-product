@@ -1,8 +1,6 @@
 package com.example.restapisearch.repository;
 
 import java.util.List;
-
-import com.example.restapisearch.dto.CatalogOutput;
 import com.example.restapisearch.dto.CatalogProjection;
 import com.example.restapisearch.entity.Catalog;
 
