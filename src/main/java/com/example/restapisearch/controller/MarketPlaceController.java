@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -85,6 +86,17 @@ public class MarketPlaceController {
         List<CatalogProjection> catalogOutputs = null;
         catalogOutputs = catalogRepository.getAllCatalogsInfo();
         return new ResponseEntity<>(catalogOutputs,HttpStatus.OK);
+    }
+
+
+    @GetMapping("/v1/catalog/search")
+    public ResponseEntity<Object> catalogSearchInfo(@RequestParam(name = "searchText") String searchText){
+        List<CatalogProjection> catalogProjections = null;
+        
+        catalogProjections = catalogRepository.getAllCatalogSearchInfo(searchText);
+
+        return new ResponseEntity<>(catalogProjections,HttpStatus.OK);
+
     }
 
 
