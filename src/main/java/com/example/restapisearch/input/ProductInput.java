@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductInput {
+    // input fields
     private String name;
     private String description;
     private boolean active;
