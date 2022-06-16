@@ -3,7 +3,6 @@ package com.example.restapisearch.controller;
 import java.util.List;
 
 import com.example.restapisearch.dto.CatalogAssetInfo;
-import com.example.restapisearch.dto.CatalogOutput;
 import com.example.restapisearch.dto.CatalogProjection;
 import com.example.restapisearch.entity.Catalog;
 import com.example.restapisearch.entity.CatalogAssets;
