@@ -1,6 +1,10 @@
 package com.example.restapisearch.controller;
 
+import java.util.List;
+
 import com.example.restapisearch.dto.CatalogAssetInfo;
+import com.example.restapisearch.dto.CatalogOutput;
+import com.example.restapisearch.dto.CatalogProjection;
 import com.example.restapisearch.entity.Catalog;
 import com.example.restapisearch.entity.CatalogAssets;
 import com.example.restapisearch.repository.CatalogAssetsRepository;
@@ -9,10 +13,12 @@ import com.example.restapisearch.repository.CatalogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 @RequestMapping("/api")
@@ -23,6 +29,12 @@ public class MarketPlaceController {
 
     @Autowired
     private CatalogAssetsRepository catalogAssetsRepository;
+
+    /**
+     * saveCatalog is used to create catalog
+     * @param catalog
+     * @return
+     */
 
     @PostMapping("/v1/catalog")
     public ResponseEntity<Object> saveCatalog(@RequestBody Catalog catalog) {
@@ -36,6 +48,11 @@ public class MarketPlaceController {
         }
         
     }
+    /**
+     * addAsset is used to add an asset to catalog
+     * @param catalogAssetsInfo
+     * @return
+     */
 
     @PostMapping("/v1/catalog/asset")
     public ResponseEntity<Object> addAsset(@RequestBody CatalogAssetInfo catalogAssetsInfo) {
@@ -59,5 +76,17 @@ public class MarketPlaceController {
             return new ResponseEntity<>("add asset to catalog failed",HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    /**
+     * catalogsInfo is used to get catalog information along with asset information from join query
+     * @return
+     */
+    @GetMapping("/v1/catalog/info")
+    public ResponseEntity<Object> catalogsInfo(){
+        List<CatalogProjection> catalogOutputs = null;
+        catalogOutputs = catalogRepository.getAllCatalogsInfo();
+        return new ResponseEntity<>(catalogOutputs,HttpStatus.OK);
+    }
+
 
 }
