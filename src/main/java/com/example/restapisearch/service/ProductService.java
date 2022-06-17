@@ -1,7 +1,6 @@
 package com.example.restapisearch.service;
 
 import com.example.restapisearch.entity.Product;
-import com.example.restapisearch.input.ProductInput;
 import com.example.restapisearch.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
