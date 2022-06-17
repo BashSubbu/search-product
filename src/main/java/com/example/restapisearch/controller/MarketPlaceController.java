@@ -8,6 +8,7 @@ import com.example.restapisearch.entity.Catalog;
 import com.example.restapisearch.entity.CatalogAssets;
 import com.example.restapisearch.repository.CatalogAssetsRepository;
 import com.example.restapisearch.repository.CatalogRepository;
+import com.example.restapisearch.service.ICatalogService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,9 @@ public class MarketPlaceController {
 
     @Autowired
     private CatalogAssetsRepository catalogAssetsRepository;
+
+    @Autowired
+    private ICatalogService catalogService;
 
     /**
      * saveCatalog is used to create catalog
@@ -84,7 +88,7 @@ public class MarketPlaceController {
     @GetMapping("/v1/catalog/info")
     public ResponseEntity<Object> catalogsInfo(){
         List<CatalogProjection> catalogOutputs = null;
-        catalogOutputs = catalogRepository.getAllCatalogsInfo();
+        catalogOutputs = catalogService.getAllCatalogsInfo();
         return new ResponseEntity<>(catalogOutputs,HttpStatus.OK);
     }
 
@@ -93,7 +97,7 @@ public class MarketPlaceController {
     public ResponseEntity<Object> catalogSearchInfo(@RequestParam(name = "searchText") String searchText){
         List<CatalogProjection> catalogProjections = null;
         
-        catalogProjections = catalogRepository.getAllCatalogSearchInfo(searchText);
+        catalogProjections = catalogService.getAllCatalogSearchInfo(searchText);
 
         return new ResponseEntity<>(catalogProjections,HttpStatus.OK);
 
