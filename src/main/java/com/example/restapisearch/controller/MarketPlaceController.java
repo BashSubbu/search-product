@@ -92,7 +92,7 @@ public class MarketPlaceController {
         return new ResponseEntity<>(catalogOutputs,HttpStatus.OK);
     }
 
-
+    // added single line comment 
     @GetMapping("/v1/catalog/search")
     public ResponseEntity<Object> catalogSearchInfo(@RequestParam(name = "searchText") String searchText){
         List<CatalogProjection> catalogProjections = null;
