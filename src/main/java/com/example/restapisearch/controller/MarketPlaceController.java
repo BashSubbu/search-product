@@ -97,7 +97,6 @@ public class MarketPlaceController {
      * @return
      */
 
-    // added single line comment 
     @GetMapping("/v1/catalog/search")
     public ResponseEntity<Object> catalogSearchInfo(@RequestParam(name = "searchText") String searchText){
         List<CatalogProjection> catalogProjections = null;
