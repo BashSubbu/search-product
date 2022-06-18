@@ -92,6 +92,11 @@ public class MarketPlaceController {
         return new ResponseEntity<>(catalogOutputs,HttpStatus.OK);
     }
 
+    /**
+     * catalogSearchInfo is used to get catalogs based on search text
+     * @param searchText
+     * @return
+     */
 
     @GetMapping("/v1/catalog/search")
     public ResponseEntity<Object> catalogSearchInfo(@RequestParam(name = "searchText") String searchText){
