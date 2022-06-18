@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.example.restapisearch.dto.CatalogProjection;
 import com.example.restapisearch.repository.CatalogRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
