@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CatalogRepository extends JpaRepository<Catalog,Long>{
+    
     @Query(value = "select DISTINCT c.id as Id,c.name as Name,ca.asset_name as assetName from catalog c INNER JOIN catalog_assets ca on c.id=ca.catalog_id",nativeQuery = true)
     List<CatalogProjection> getAllCatalogsInfo();
 
